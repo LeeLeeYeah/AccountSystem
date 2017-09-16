@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/lines.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <script src="/js/jquery.min.js"></script>
+    <link href="/css/custom.css" rel="stylesheet"/>
+    <script src="/js/metisMenu.min.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/js/d3.v3.js"></script>
+    <script src="/js/rickshaw.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+    <nav th:fragment="navigator" class="top1 navbar navbar-default navbar-static-top" role="navigation"
+         style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Stock Account Management System</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="m_2"><a href="/logout.do"><i class="fa fa-lock"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="#"><i class="fa fa-indent nav_icon"></i>Personal Account<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/individual.html">Opening Up</a>
+                            </li>
+                            <li>
+                                <a href="/indiDestroy.html">Post-Registering</a>
+                            </li>
+                            <li>
+                                <a href="/indiLost.html">Reporting Loss</a>
+                            </li>
+                            <li>
+                                <a href="/indiUnLost.html">Recovering</a>
+                            </li>
+                            <li>
+                                <a href="/retrieve.html">Retrieve password</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-indent nav_icon"></i>Corporation Account<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/corperation.html">Openning Up</a>
+                            </li>
+                            <li>
+                                <a href="/corDestroy.html">Post-Registering</a>
+                            </li>
+                            <li>
+                                <a href="/corLost.html">Reporting Loss</a>
+                            </li>
+                            <li>
+                                <a href="/corUnLost.html">Recovering</a>
+                            </li>
+                            <li>
+                                <a href="/retrieve.html">Retrieve password</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="graphs">
+            <div class="xs content_bottom">
+                <h3>Personal Account</h3>
+            </div>
+            <div class="panel-body1">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Phone</th>
+                    </tr>
+                    </thead>
+                    <tr th:class="${rowStat.odd} ? 'active' : 'success'" th:each="indiUser,rowStat : ${indiUsers}">
+                        <td th:text="${indiUser.account}"></td>
+                        <td th:text="${indiUser.name}"></td>
+                        <td th:text="${indiUser.identity}"></td>
+                        <td th:text="${indiUser.phone}"></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="xs content_bottom">
+                <h3>Corporation Account</h3>
+            </div>
+            <div class="panel-body1">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Account</th>
+                        <th>Name of Legal Person</th>
+                        <th>ID of Legal Person</th>
+                        <th>Phone of Legal Person</th>
+                    </tr>
+                    </thead>
+                    <tr th:class="${rowStat.odd} ? 'active' : 'success'" th:each="corUser,rowStat : ${corUsers}">
+                        <td th:text="${corUser.account}"></td>
+                        <td th:text="${corUser.name}"></td>
+                        <td th:text="${corUser.identity}"></td>
+                        <td th:text="${corUser.phone}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="panel-body1">
+                <div th:fragment="footer" class="copy">
+                    <p>Copyright &copy; 2016 ZJU. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>

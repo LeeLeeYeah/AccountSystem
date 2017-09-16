@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+
+    <link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/myUtil.js"></script>
+
+    <script th:inline="javascript">
+        var password;
+        var account;
+        window.onload = function () {
+            account = $('#account');
+            password = $('#password');
+            /*<![CDATA[*/
+
+            switch ([[${curStatus.status}]]) {
+                case 1:
+                    showBar(account, "Account or password isn't correct.");
+                    break;
+                case 2:
+                    showBar(account, "Character is not valid. Only a-z, A-Z and _");
+                    break;
+            }
+
+            /*]]>*/
+        };
+
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+        function validate() {
+
+            return checkEmpty([account, password]);
+        }
+
+    </script>
+
+</head>
+<body id="login">
+<div class="login-logo">
+    <a href="index.html"><img src="images/logo.png" alt=""/></a>
+</div>
+<h2 class="form-heading">login</h2>
+<div class="app-cam">
+    <form action="/login.do"  method="post" onsubmit="return validate()">
+        <input id="account" name="account" type="text" class="form-control1" placeholder="Account" autofocus=""/>
+        <input id="password" type="password" name="password" class="form-control1" placeholder="Password"/>
+        <div class="submit">
+            <input type="submit" value="Login"/>
+        </div>
+
+    </form>
+</div>
+<div th:fragment="footer" class="copy navbar-fixed-bottom">
+    <p>Copyright &copy; 2016 ZJU. All rights reserved.
+    </p>
+</div>
+</body>
+</html>

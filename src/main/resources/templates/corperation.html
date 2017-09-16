@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Opening Up Corporation Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Modern Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"/>
+    <link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/style.css" rel='stylesheet' type='text/css'/>
+    <link href="/css/font-awesome.css" rel="stylesheet"/>
+    <script src="/js/jquery.min.js"></script>
+    <link href='http://fonts.useso.com/css?family=Roboto:400,100,300,500,700,900' rel='stylesheet' type='text/css'/>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/myUtil.js"></script>
+
+    <script th:inline="javascript">
+
+
+        var account;
+        var password;
+        var rep_password;
+        var identity;
+        window.onload = function () {
+            password = $('#password');
+            rep_password = $('#rep_identity');
+            identity=$('#identity');
+            /*<![CDATA[*/
+
+            switch ([[${curStatus.status}]]) {
+                case 3:
+                    showBar(identity,"This ID has already registered!");
+                    break;
+            }
+            /*]]>*/
+        };
+
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+
+        function validate() {
+            var ret =true;
+            if (password.val() != rep_password.val()) {
+                ret = false;
+                showBar(rep_password, "Passwords don't match.");
+            }
+            return ret;
+        }
+
+    </script>
+</head>
+<body>
+<div id="wrapper">
+    <nav th:replace="index.html :: navigator">
+
+    </nav>
+    <div id="page-wrapper">
+        <div class="col-md-12 graphs">
+            <div class="xs">
+                <h3>Opening Up Corporation Account</h3>
+
+                <div class="panel-body">
+                    <form th:action="@{/corRegister.do}" th:object="${user}" method="post" role="form" class="form-horizontal"
+                          onsubmit="return validate()">
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Account</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="stockAccountNumber" th:field="*{account}" type="text" class="form-control1"
+                                           th:placeholder="${account}" data-toggle="popover"
+                                           data-placement="right"  readonly=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="password" th:field="*{password}" type="password" class="form-control1"
+                                            placeholder="Please input the password" data-toggle="popover"
+                                           data-placement="right" autofocus="" required=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Confirm Password</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="rep_identity"  type="password" class="form-control1"
+                                            placeholder="Please retype the password" data-toggle="popover"
+                                           data-placement="right" required=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Legal Person Register Number</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="legalNumber" th:field="*{legalNumber}" type="text" class="form-control1"
+                                            placeholder="Please input legal person register number" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Business License Number</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="operationNumber" th:field="*{operationNumber}" type="text" class="form-control1"
+                                           placeholder="Please input business license number" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Legal Person's Name</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="name" th:field="*{name}" type="text" class="form-control1"
+                                           placeholder="Please type in legal person's name" data-toggle="popover"
+                                           data-placement="right" required=""/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Legal Person's ID</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="identity" th:field="*{identity}" type="text" class="form-control1"
+                                            placeholder="Please type in legal person's ID" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Legal Person's Address</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="address" th:field="*{address}" type="text" class="form-control1"
+                                            placeholder="Please type in legal person's address" data-toggle="popover"
+                                           data-placement="right" required=""/>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Legal Person's Phone Number</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="phone" th:field="*{phone}" type="text" class="form-control1"
+                                            placeholder="Please type in legal person's number" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Commission Agent Name</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="executorName" th:field="*{executorName}" type="text" class="form-control1"
+                                           placeholder="Please type in commission agent name" data-toggle="popover"
+                                           data-placement="right" required=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Commission Agent ID</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="executorIdentity" th:field="*{executorIdentity}" type="text" class="form-control1"
+                                           placeholder="Please type in commission agent ID" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Commission Agent Phone Number</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="executorPhone" th:field="*{executorPhone}" type="text" class="form-control1"
+                                           placeholder="Please type in commission agent phone number" data-toggle="popover"
+                                           data-placement="right" required=""
+                                           onkeyup="this.value=this.value.replace(/[\W]/g,'')"
+                                           />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Commission Agent Address</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+									<span class="input-group-addon">
+										<i class="fa fa-key"></i>
+									</span>
+                                    <input id="executorAddress" th:field="*{executorAddress}" type="text" class="form-control1"
+                                           placeholder="Please type in commission agent address" data-toggle="popover"
+                                           data-placement="right" required=""/>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel-footer">
+                            <div class="row" align="center">
+
+                                    <input type="submit" class="btn-success btn" value="submit"/>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <div th:replace="index.html :: footer">
+            </div>
+        </div>
+    </div>
+</div>
+<link href="css/custom.css" rel="stylesheet"/>
+<script src="js/metisMenu.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
